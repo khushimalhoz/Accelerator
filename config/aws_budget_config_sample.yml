@@ -1,0 +1,155 @@
+budget_alerting:
+  - whole_account_budget:
+      aws_profile: ""
+      account_id: '867344468028'
+      role_arn: arn:aws:iam::867344468028:role/Service_role_budget
+      budget_name: Whole-Account-Budget
+      budget_type: COST
+      budget_time_unit: MONTHLY
+      budget_limit_amount: '500'
+      budget_limit_unit: USD
+      cost_types_parameters:
+        IncludeTax: true
+        IncludeSubscription: true
+        UseBlended: false
+        IncludeRefund: false
+        IncludeCredit: false
+        IncludeUpfront: true
+        IncludeRecurring: true
+        IncludeOtherSubscription: true
+        IncludeSupport: true
+        IncludeDiscount: true
+        UseAmortized: false
+      actual_budget_comparison_operator: GREATER_THAN
+      actual_budget_threshold: 60
+      forecasted_budget_comparison_operator: GREATER_THAN
+      forecasted_budget_threshold: 80
+      threshold_type: PERCENTAGE
+      actual_threshold_notification: ACTUAL
+      forecasted_threshold_notification: FORECASTED
+      recreate_budget_if_needed: true
+      email_addresses:
+        - piyush.upadhyay@opstree.com
+
+  - account_service_budget:
+      aws_profile: ""
+      account_id: '867344468028'
+      role_arn: arn:aws:iam::867344468028:role/Service_role_budget
+      budget_name: EC2-Service-Budget
+      budget_type: COST
+      budget_time_unit: MONTHLY
+      budget_limit_amount: '145'
+      budget_limit_unit: USD
+      cost_types_parameters:
+        IncludeTax: true
+        IncludeSubscription: true
+        UseBlended: false
+        IncludeRefund: false
+        IncludeCredit: false
+        IncludeUpfront: true
+        IncludeRecurring: true
+        IncludeOtherSubscription: true
+        IncludeSupport: true
+        IncludeDiscount: true
+        UseAmortized: false
+      actual_budget_comparison_operator: GREATER_THAN
+      actual_budget_threshold: 60
+      forecasted_budget_comparison_operator: GREATER_THAN
+      forecasted_budget_threshold: 80
+      threshold_type: PERCENTAGE
+      actual_threshold_notification: ACTUAL
+      forecasted_threshold_notification: FORECASTED
+      recreate_budget_if_needed: true
+      email_addresses:
+        - piyush.upadhyay@opstree.com
+        
+      cost_filters:
+        services:
+          - EC2
+  - account_service_budget:
+      aws_profile: ""
+      account_id: '867344468028'
+      role_arn: arn:aws:iam::867344468028:role/Service_role_budget
+      budget_name: RDS-Service-Budget
+      budget_type: COST
+      budget_time_unit: MONTHLY
+      budget_limit_amount: '145'
+      budget_limit_unit: USD
+      cost_types_parameters:
+        IncludeTax: true
+        IncludeSubscription: true
+        UseBlended: false
+        IncludeRefund: false
+        IncludeCredit: false
+        IncludeUpfront: true
+        IncludeRecurring: true
+        IncludeOtherSubscription: true
+        IncludeSupport: true
+        IncludeDiscount: true
+        UseAmortized: false
+      actual_budget_comparison_operator: GREATER_THAN
+      actual_budget_threshold: 60
+      forecasted_budget_comparison_operator: GREATER_THAN
+      forecasted_budget_threshold: 80
+      threshold_type: PERCENTAGE
+      actual_threshold_notification: ACTUAL
+      forecasted_threshold_notification: FORECASTED
+      recreate_budget_if_needed: true
+      email_addresses:
+        - piyush.upadhyay@opstree.com
+        
+      cost_filters:
+        services:
+          - RDS
+
+  - account_service_budget:
+      aws_profile: ""
+      account_id: '867344468028'
+      role_arn: arn:aws:iam::867344468028:role/Service_role_budget
+      budget_name: SQS-Service-Budget
+      budget_type: COST
+      budget_time_unit: MONTHLY
+      budget_limit_amount: '145'
+      budget_limit_unit: USD
+      cost_types_parameters:
+        IncludeTax: true
+        IncludeSubscription: true
+        UseBlended: false
+        IncludeRefund: false
+        IncludeCredit: false
+        IncludeUpfront: true
+        IncludeRecurring: true
+        IncludeOtherSubscription: true
+        IncludeSupport: true
+        IncludeDiscount: true
+        UseAmortized: false
+      actual_budget_comparison_operator: GREATER_THAN
+      actual_budget_threshold: 60
+      forecasted_budget_comparison_operator: GREATER_THAN
+      forecasted_budget_threshold: 80
+      threshold_type: PERCENTAGE
+      actual_threshold_notification: ACTUAL
+      forecasted_threshold_notification: FORECASTED
+      recreate_budget_if_needed: true
+      email_addresses:
+        - piyush.upadhyay@opstree.com
+        
+      cost_filters:
+        services:
+          - SQS        
+cost_anomaly:
+  - anomaly_monitor:
+      aws_profile: ""
+      role_arn: 
+      anomaly_monitor_name: anomaly-monitor
+      anomaly_monitor_type: DIMENSIONAL
+      anomaly_monitor_dimension: SERVICE
+      email_addresses:
+        - piyush.upadhyay@opstree.com
+      threshold: 17
+      frequency: DAILY
+      subscription_name: Team
+  
+actions_on:
+  - cost_anomaly
+  - budget_alerting

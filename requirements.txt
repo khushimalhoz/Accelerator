@@ -1,0 +1,9 @@
+awscli==1.32.16
+boto3==1.34.11
+JSON-log-formatter==0.5.2
+pyinstaller==6.3.0
+PyYAML==5.3.1
+setuptools==58.5.3
+wheel==0.37.0
+git+https://github.com/OT-PYTHON-UTILS/ot-aws-libs.git@develop
+git+https://github.com/OT-PYTHON-UTILS/ot-filesystem-libs.git@develop
